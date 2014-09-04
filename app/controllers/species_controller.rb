@@ -19,6 +19,11 @@ class SpeciesController < ApplicationController
     render('species/edit.html.erb')
   end
 
+  def show
+    @species = Species.find(params[:id])
+    render('species/show.html.erb')
+  end
+
   def update
     @species = Species.find(params[:id])
     if @species.update(params[:species])
@@ -26,5 +31,11 @@ class SpeciesController < ApplicationController
     else
       render('species/edit.html.erb')
     end
+  end
+
+  def destroy
+    @species = Species.find(params[:id])
+    @species.destroy
+    index
   end
 end

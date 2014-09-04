@@ -2,6 +2,6 @@
 
 <ul>
   <% @species.each do |species| %>
-    <li><%= species.name %></li>
+    <li><a href="/species/<%= species.id %>"><%= species.name %></a></li>
   <% end %>
 </ul>
