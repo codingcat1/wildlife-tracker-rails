@@ -19,3 +19,26 @@
   <input id='species_id' name="sightings[species_id]" value="<%= @species.id %>" type="hidden">
   <button>Create new sighting</button>
 </form>
+
+
+<h1>All Sightings</h2>
+
+<ul>
+  <% @sightings.each do |sighting| %>
+    <% if @species.id == sighting.species_id %>
+      <li>
+        <% current_species = @all_species.find(sighting.species_id) %>
+        <% current_species_name = current_species.name %>
+
+        SPECIES: <%= current_species_name %>
+        DATE: <%= sighting.date %>
+        LATITUDE: <%= sighting.latitude %>
+        LONGITUDE: <%= sighting.longitude %>
+        <button><a href="/sightings/<%= sighting.id %>"
+        data-confirm="You sure?"
+        data-method="delete"
+        rel="nofollow">Delete</a></button>
+        <button><a href="/sightings/<%= sighting.id %>/edit">Update</a></button></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -3,8 +3,13 @@
 <ul>
   <% @sightings.each do |sighting| %>
     <li><a href="/sighting/<%= sighting.id %>">
-        <%= sighting.date %> Latitude:
-        <%= sighting.latitude %> Longitude:
-        <%= sighting.longitude %> </a></li>
+
+        <% current_species = @species.find(sighting.species_id) %>
+        <% current_species_name = current_species.name %>
+
+        Species: <%= current_species_name %>
+        Date: <%= sighting.date %>
+        Latitude: <%= sighting.latitude %>
+        Longitude: <%= sighting.longitude %> </a></li>
   <% end %>
 </ul>

@@ -1,0 +1,11 @@
+<h1>Edit sighting</h1>
+
+<form action="sightings" method="post">
+  <label for="revise_date">Date:</label>
+  <input id="revise_date" name="sightings[date]" type="datetime" value="<%= @sightings.date %>">
+  <label for="revise_latitude">Latitude:</label>
+  <input id='revise_latitude' name="sightings[latitude]" type="text" value="<%= @sightings.latitude %>">
+  <label for="revise_longitude">Longitude:</label>
+  <input id='revise_longitude' name="sightings[longitude]" type="text" value="<%= @sightings.longitude %>">
+  <button>Update sighting</button>
+</form>

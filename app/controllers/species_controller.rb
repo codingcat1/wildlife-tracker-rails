@@ -21,6 +21,8 @@ class SpeciesController < ApplicationController
 
   def show
     @species = Species.find(params[:id])
+    @all_species =Species.all
+    @sightings = Sighting.all
     render('species/show.html.erb')
   end
 
