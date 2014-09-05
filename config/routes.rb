@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   match('sightings/:id/edit', {:via => :get, :to => 'sightings#edit'})
   match('sightings/:id', {:via => [:patch, :put], :to => 'sightings#update'})
   match('sightings/:id', {:via => :delete, :to => 'sightings#destroy'})
+  match('regions', {:via => :post, :to => 'regions#create'})
 end

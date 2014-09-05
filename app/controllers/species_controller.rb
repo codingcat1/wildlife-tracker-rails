@@ -23,6 +23,7 @@ class SpeciesController < ApplicationController
     @species = Species.find(params[:id])
     @all_species =Species.all
     @sightings = Sighting.all
+    @regions = Region.all
     render('species/show.html.erb')
   end
 
