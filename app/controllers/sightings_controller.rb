@@ -19,8 +19,17 @@ class SightingsController < ApplicationController
   end
 
   def edit
-    @sightings = Sighting.find(params[:id])
+    @sighting = Sighting.find(params[:id])
     render('sightings/edit.html.erb')
+  end
+
+  def update
+    @sighting = Sighting.find(params[:id])
+    if @sighting.update(params[:sightings])
+      index
+    else
+      edit
+    end
   end
 
 end

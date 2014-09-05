@@ -1,11 +1,21 @@
 <h1>Edit sighting</h1>
 
-<form action="sightings" method="post">
+<% if @sighting.errors.any? %>
+  <h3>Please fix any errors:</h3>
+  <ul>
+    <% @sighting.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/sightings/<%= @sighting.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
   <label for="revise_date">Date:</label>
-  <input id="revise_date" name="sightings[date]" type="datetime" value="<%= @sightings.date %>">
+  <input id="revise_date" name="sightings[date]" type="datetime" value="<%= @sighting.date %>">
   <label for="revise_latitude">Latitude:</label>
-  <input id='revise_latitude' name="sightings[latitude]" type="text" value="<%= @sightings.latitude %>">
+  <input id='revise_latitude' name="sightings[latitude]" type="text" value="<%= @sighting.latitude %>">
   <label for="revise_longitude">Longitude:</label>
-  <input id='revise_longitude' name="sightings[longitude]" type="text" value="<%= @sightings.longitude %>">
+  <input id='revise_longitude' name="sightings[longitude]" type="text" value="<%= @sighting.longitude %>">
   <button>Update sighting</button>
 </form>
