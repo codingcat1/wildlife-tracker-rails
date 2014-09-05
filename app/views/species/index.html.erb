@@ -5,3 +5,9 @@
     <li><a href="/species/<%= species.id %>"><%= species.name %></a></li>
   <% end %>
 </ul>
+
+<form action="/species" method="post">
+  <label for="new_species">New species</label>
+  <input id='new_species' name="species[name]" type="text">
+  <button>Create new species</button>
+</form>

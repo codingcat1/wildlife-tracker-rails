@@ -4,10 +4,10 @@ class SpeciesController < ApplicationController
     render('species/index.html.erb')
   end
 
-  def new
-    @species = Species.new(params[:species])
-    render('species/new.html.erb')
-  end
+  # def new
+  #   @species = Species.new(params[:species])
+  #   render('species/index.html.erb')
+  # end
 
   def create
     @species = Species.create(params[:species])
