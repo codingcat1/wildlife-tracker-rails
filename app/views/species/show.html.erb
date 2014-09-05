@@ -7,3 +7,15 @@
       rel="nofollow">Delete</a></p>
 
 <p> <a href="/species">Return to Species listing.</a></p>
+
+<form action="/sightings" method="post">
+  <h3>Add a sighting</h3>
+  <label for="new_date">Date:</label>
+  <input id='new_date' name="sightings[date]" type="datetime">
+  <label for="new_latitude">Latitude:</label>
+  <input id='new_latitude' name="sightings[latitude]" type="text">
+  <label for="new_longitude">Longitude:</label>
+  <input id='new_longitude' name="sightings[longitude]" type="text">
+  <input id='species_id' name="sightings[species_id]" value="<%= @species.id %>" type="hidden">
+  <button>Create new sighting</button>
+</form>
