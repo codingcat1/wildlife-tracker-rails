@@ -11,7 +11,7 @@ class SpeciesController < ApplicationController
 
   def create
     @species = Species.create(params[:species])
-    index
+    redirect_to '/species'
   end
 
   def edit
@@ -30,7 +30,7 @@ class SpeciesController < ApplicationController
   def update
     @species = Species.find(params[:id])
     if @species.update(params[:species])
-      index
+      redirect_to '/species'
     else
       render('species/edit.html.erb')
     end

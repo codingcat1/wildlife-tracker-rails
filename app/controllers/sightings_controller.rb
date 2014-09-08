@@ -9,7 +9,13 @@ class SightingsController < ApplicationController
   def index
     @sightings = Sighting.all
     @species = Species.all
-    render('sightings/index.html.erb')
+    @regions = Region.all
+    if params[:seen_these_animals] != nil
+      @sightings = @sightings.where(:date => Date.parse(params[:seen_these_animals][:start_date])..Date.parse(params[:seen_these_animals][:end_date]), :region_id => params[:seen_these_animals][:region_id])
+
+    else
+      @sightings = Sighting.all
+    end
   end
 
   def destroy
@@ -27,10 +33,14 @@ class SightingsController < ApplicationController
   def update
     @sighting = Sighting.find(params[:id])
     if @sighting.update(params[:sightings])
-      index
+      redirect_to "/sightings"
     else
-      edit
+      render 'sightings/edit.html.erb'
     end
+  end
+
+  def show
+    edit
   end
 
 end

@@ -2,14 +2,32 @@
 
 <ul>
   <% @sightings.each do |sighting| %>
-    <li><a href="/sighting/<%= sighting.id %>">
+    <li><a href="/sightings/<%= sighting.id %>">
+      <% current_species = @species.find(sighting.species_id) %>
+      <% current_species_name = current_species.name %>
 
-        <% current_species = @species.find(sighting.species_id) %>
-        <% current_species_name = current_species.name %>
-
-        Species: <%= current_species_name %>
-        Date: <%= sighting.date %>
-        Latitude: <%= sighting.latitude %>
-        Longitude: <%= sighting.longitude %> </a></li>
+      Species: <%= current_species_name %>
+      Date: <%= sighting.date %>
+      Latitude: <%= sighting.latitude %>
+      Longitude: <%= sighting.longitude %>
+      <% current_region = sighting.region_id.to_i %>
+      Region: <%= @regions.find(current_region).name %>
+      </a></li>
   <% end %>
 </ul>
+
+<form action="/sightings" method="get">
+  <label for="sightings_start_date">Start Date (YYYY/MM/DD):</label>
+  <input id="sightings_start_date" name="seen_these_animals[start_date]" type"text">
+  <label for="sightings_end_date">End date (YYYY/MM/DD):</label>
+  <input id="sightings_end_date" name="seen_these_animals[end_date]" type"text">
+  <label for="sightings_region">Region:</label>
+  <select name="seen_these_animals[region_id]">
+    <% @regions.each do |region| %>
+      <option value="<%= region.id %>"><%= region.name %></option>
+    <% end %>
+  </select>
+
+  <button>Run report</button>
+</form>
+
