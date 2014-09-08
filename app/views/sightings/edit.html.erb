@@ -17,5 +17,12 @@
   <input id='revise_latitude' name="sightings[latitude]" type="text" value="<%= @sighting.latitude %>">
   <label for="revise_longitude">Longitude:</label>
   <input id='revise_longitude' name="sightings[longitude]" type="text" value="<%= @sighting.longitude %>">
+
+  <select name="sightings[region_id]">
+    <% @all_regions.each do |region| %>
+      <option value="<%= region.id %>"><%= region.name %></option>
+    <% end %>
+  </select>
+
   <button>Update sighting</button>
 </form>

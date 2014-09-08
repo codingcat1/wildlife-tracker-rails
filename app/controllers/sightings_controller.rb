@@ -20,6 +20,7 @@ class SightingsController < ApplicationController
 
   def edit
     @sighting = Sighting.find(params[:id])
+    @all_regions = Region.all
     render('sightings/edit.html.erb')
   end
 

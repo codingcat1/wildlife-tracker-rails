@@ -17,12 +17,12 @@
   <label for="new_longitude">Longitude:</label>
   <input id='new_longitude' name="sightings[longitude]" type="text">
   <input id='species_id' name="sightings[species_id]" value="<%= @species.id %>" type="hidden">
-<!--
+
   <select name="sightings[region_id]">
-    <% @regions.each do |region| %>
+    <% @all_regions.each do |region| %>
       <option value="<%= region.id %>"><%= region.name %></option>
     <% end %>
-  </select> -->
+  </select>
 
   <button>Create new sighting</button>
 </form>
@@ -47,6 +47,13 @@
         DATE: <%= sighting.date %>
         LATITUDE: <%= sighting.latitude %>
         LONGITUDE: <%= sighting.longitude %>
+        <% @all_regions.each do |region| %>
+          <% if region.id == sighting.region_id %>
+
+            <% current_region = @all_regions.find(sighting.region_id) %>
+          REGION: <%= current_region.name %>
+          <% end %>
+        <% end %>
         <button><a href="/sightings/<%= sighting.id %>"
         data-confirm="You sure?"
         data-method="delete"
