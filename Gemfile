@@ -15,6 +15,7 @@ gem 'quiet_assets'
 gem 'rspec-rails'
 gem 'shoulda-matchers'
 
-
-
+group :production do
+  gem 'rails_12factor'
+end
 

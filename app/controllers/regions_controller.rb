@@ -1,7 +1,7 @@
 class RegionsController < ApplicationController
 
   def create
-    @region = Region.create(params[:region])
+    @region = Region.create(params[:regions])
     redirect_to :back
   end
 
